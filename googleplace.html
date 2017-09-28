@@ -1,0 +1,82 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Place Finder</title>
+</head>
+
+<body>
+  {{> map}}
+</body>
+
+
+<template name="map">
+  <div class="container">
+    <div class="row">
+      <div class="col l4">
+        <h3>Where to? </h3> 
+      </div>
+      <div class= "col l8">
+
+       <form id="search" name="search">
+        <div class="row">
+          <div class="col l8">
+            <input class="search-input-box" autocomplete="off" type="text" id="searchinput" placeholder="Search here">
+          </div>
+
+          <div class="col l4">
+            <button class="btn-flat no-margin" id="send" type="submit" name="action">SEND</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col l8 m12 s12 tableheight">
+      <div class="map-container" id="map-container">
+        {{#unless geolocationError}}
+        {{> googleMap name="map" options=mapOptions}}
+        {{else}}
+        Geolocation failed: {{geolocationError}}
+        {{/unless}}
+      </div>
+      {{#if searchSubmited}}
+      <div class="map-container" id="map-container">
+       {{resultmap}}
+     </div>
+     {{/if}}
+   </div>
+   <div class="col l4 m12 s12 tableheight">
+    <div class="result-list">
+
+      <table class="bordered highlight striped">
+            <!--<thead>
+                <tr>
+                    <th data-field="name">Your result for : {{SearchString}}</th>
+                </tr>
+              </thead>-->
+
+              <tbody>
+                {{#each detail in listResult}} 
+                <tr>
+                  <td> 
+                  {{detail.name}}
+                    <br>
+                    {{detail.formatted_address}}
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </template>
+
+
+  <template name="resultmap">
+    <div class="map-container">
+      {{> googleMap name="resultmap" options=mapOptions}}
+    </div>
+  </template>  
+

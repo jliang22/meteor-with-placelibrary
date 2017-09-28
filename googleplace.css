@@ -1,0 +1,52 @@
+html {
+	background-color: rgb(103, 139, 206);
+   font-family: GillSans, Calibri, Trebuchet, sans-serif;
+
+}
+
+h3 {
+	color: #FEFEFE;
+    font-size: 75px;
+    text-shadow: 1px 1px 3px #000;
+    text-align: left;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 100%;
+  height: 550px;
+}
+
+.container {
+	width: 85%;
+}
+
+#search {
+margin-top: 45px;
+    margin-left: 30px;
+}
+
+input{
+	background-color: #FEFEFE !important;
+	font-size: 20px !important;
+	border-radius: 5px !important;
+}
+
+button {
+	height:45px !important;
+	color:#FEFEFE !important;
+	border: 2px solid !important;
+	padding: 2px 0px 2px 0px;
+}
+
+#search {
+	font-size: 20px;
+}
+
+.bordered {
+	border: 2px solid grey;
+}
+
+table.highlight tbody tr:hover {
+    background-color: green !important;
+}

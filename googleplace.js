@@ -4,6 +4,8 @@
     var markers = [];
     var infoWindow;
     var myMarker;
+    var directionsService;
+     var directionsDisplay;
 
     Meteor.startup(function() {
      GoogleMaps.load({ v: '3', key: Meteor.settings.public.apiKey, libraries: 'geometry,places' });
@@ -63,6 +65,8 @@
  infoWindow = new google.maps.InfoWindow({
           content: document.getElementById('info-content')
         });
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
 
 
       var service = new google.maps.places.PlacesService(map);
@@ -111,6 +115,7 @@
 
         function showInfoWindow() {
         var marker = this;
+        console.log("djfasklfjalkjfsd" + marker.postion + "markerr:" + marker);
         places = new google.maps.places.PlacesService(map);
         places.getDetails({placeId: marker.placeResult.place_id},
             function(place, status) {
@@ -120,6 +125,22 @@
               infoWindow.open(map, marker);
               buildIWContent(place);
             });
+        directionsDisplay.setMap(null);
+        directionsDisplay.setMap(map);
+        calculateAndDisplayRoute(marker, directionsService, directionsDisplay);
+      }
+      function calculateAndDisplayRoute(marker, directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: myMarker.position,
+          destination: marker.position,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
       }
 
         function dropMarker(i) {

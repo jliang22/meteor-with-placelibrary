@@ -94,9 +94,10 @@
                 setTimeout(dropMarker(i), i * 100);
                 addResult(results[i], i);
               }
-
+               $('ul.tabs').tabs('select_tab', 'test1');
               markers[results.length] = myMarker;
               markers[results.length].setMap(map);
+              map.fitBounds(mapPointsBounds);
             }
           }
           function clearResults() {
@@ -115,7 +116,6 @@
 
         function showInfoWindow() {
         var marker = this;
-        console.log("djfasklfjalkjfsd" + marker.postion + "markerr:" + marker);
         places = new google.maps.places.PlacesService(map);
         places.getDetails({placeId: marker.placeResult.place_id},
             function(place, status) {
@@ -123,10 +123,12 @@
                 return;
               }
               infoWindow.open(map, marker);
-              buildIWContent(place);
+               buildIWContent(place);
+     
             });
         directionsDisplay.setMap(null);
         directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('test2'));
         calculateAndDisplayRoute(marker, directionsService, directionsDisplay);
       }
       function calculateAndDisplayRoute(marker, directionsService, directionsDisplay) {
@@ -137,6 +139,7 @@
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
+          $('ul.tabs').tabs('select_tab', 'test2');
           } else {
             window.alert('Directions request failed due to ' + status);
           }
@@ -157,8 +160,10 @@
           markers = [];
         }   
         function addResult(result, i) {
+          mapPointsBounds.extend(result.geometry.location);
           var results = document.getElementById('results');
           results.style.border = "2px solid black";
+          results.style.borderTop = "none";
           var tr = document.createElement('tr');
           tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
           tr.onclick = function() {

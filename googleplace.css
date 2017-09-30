@@ -11,11 +11,38 @@ h3 {
     text-align: left;
     font-family: initial;
 }
+.no-margin {
+	margin-bottom: 0px;
+}
 
+.result-container {
+	position: absolute;
+    margin-right: 100px;
+}
+
+ul.tabs {
+    width: 400px;
+    border: 2px solid black;
+    border-bottom: none;
+ }
+
+ #test2 {
+ 	background-color: white;
+ 	width: 400px;
+ 	border: 2px solid black;
+    border-top: none !important;
+    margin-left: 20px;
+    overflow:auto;
+    height: 553px;
+ }
+#test1 {
+	width: 423px;
+    margin-left: 9px;
+}
 .map-container {
   width: 100%;
   max-width: 100%;
-  height: 550px;
+  height: 600px;
   border: 2px solid black;
 }
 
@@ -60,10 +87,17 @@ tbody.highlight tr:hover {
     background-color: #4d9053 !important;
 }
 
+.row .col.s12.shiftleft {
+	width: 440px !important;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
 #results {
-	position:absolute;
+	position: absolute;
         width: 400px;
-        height: 548px;
+        height: 552px;
         overflow: auto;
         cursor: pointer;
         overflow-x: hidden;

@@ -1,20 +1,22 @@
 html {
-	background-color: rgb(103, 139, 206);
+	background-image: url('http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_527bf56961712_1.JPG');
    font-family: GillSans, Calibri, Trebuchet, sans-serif;
 
 }
 
 h3 {
-	color: #FEFEFE;
-    font-size: 75px;
+	color: black;
+    font-size: 68px;
     text-shadow: 1px 1px 3px #000;
     text-align: left;
+    font-family: initial;
 }
 
 .map-container {
   width: 100%;
   max-width: 100%;
   height: 550px;
+  border: 2px solid black;
 }
 
 .container {
@@ -22,8 +24,15 @@ h3 {
 }
 
 #search {
-margin-top: 45px;
-    margin-left: 30px;
+margin-top: 38px;
+}
+
+button#send {
+	border-radius: 5px;
+	    height: 50px !important;
+    margin-left: 5px;
+    background-color: white;
+    font-size: 20px;
 }
 
 input{
@@ -34,19 +43,28 @@ input{
 
 button {
 	height:45px !important;
-	color:#FEFEFE !important;
-	border: 2px solid !important;
+	color: black !important;
+	border: 3px solid black !important;
 	padding: 2px 0px 2px 0px;
 }
+input#searchinput, #send {
+border: 3px solid black !important;
 
-#search {
-	font-size: 20px;
+}
+.search-input-box {
+	padding-left: 15px !important;
+    font-size: 25px !important;
+    }
+
+tbody.highlight tr:hover {
+    background-color: #4d9053 !important;
 }
 
-.bordered {
-	border: 2px solid grey;
-}
-
-table.highlight tbody tr:hover {
-    background-color: green !important;
+#results {
+	position:absolute;
+        width: 400px;
+        height: 548px;
+        overflow: auto;
+        cursor: pointer;
+        overflow-x: hidden;
 }

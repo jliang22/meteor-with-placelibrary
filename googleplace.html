@@ -83,6 +83,9 @@
       </div>
 
       <div id="test1" class="col s12">
+      <div id="noresult">
+      Search something!
+      </div>
        <table>
         <tbody class="highlight" id="results">
         </tbody>
@@ -90,7 +93,9 @@
     </div>
 
     <div id="test2" class="col s12">
-    <div id="floating-panel">
+      <!--   {{#if travelMode.length}} -->
+    <div id="floating-panel" style="visibility:hidden;">
+
     <b>Mode of Travel: </b>
     <select id="mode">
       <option value="DRIVING">Driving</option>
@@ -99,6 +104,7 @@
       <option value="TRANSIT">Transit</option>
     </select>
     </div>
+   <!--  {{/if}} -->
     </div>
 
   </div>

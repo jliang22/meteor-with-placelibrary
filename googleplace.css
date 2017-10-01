@@ -3,6 +3,28 @@ html {
    font-family: GillSans, Calibri, Trebuchet, sans-serif;
 
 }
+.showme {
+	visibility: visible !important;
+}
+
+.hideme {
+	display: none;
+}
+.caret {
+	display: none;
+}
+
+#noresult {
+	font-size: 20px;
+    padding: 10px;
+}
+
+.select-wrapper input.select-dropdown {
+	border:1px solid #ee6e73;
+	color: #48a69a;
+	padding-left: 10px;
+	width: 97%;
+}
 
 h3 {
 	color: black;

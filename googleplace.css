@@ -70,7 +70,7 @@ ul.tabs {
     border: 2px solid black;
     border-bottom: none;
 }
-#test2 {
+#directionDiv {
     background-color: white;
     width: 400px;
     border: 2px solid black;
@@ -79,7 +79,7 @@ ul.tabs {
     overflow: hidden;
     height: 553px;
 }
-#test1 {
+#resultDiv {
     width: 400px;
     margin-left: 20px;
     height: 553px !important;

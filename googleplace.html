@@ -1,49 +1,24 @@
 <head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>Place Finder</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Place Finder</title>
 </head>
 
 <body>
-  {{> map}}
+    {{> map}}
 </body>
 
 
 <template name="map">
-
-  <div style="display: none">
-    <div id="info-content">
-      <table>
-        <tr id="iw-url-row" class="iw_table_row">
-          <td id="iw-icon" class="iw_table_icon"></td>
-          <td id="iw-url"></td>
-        </tr>
-        <tr id="iw-address-row" class="iw_table_row">
-          <td class="iw_attribute_name">Address:</td>
-          <td id="iw-address"></td>
-        </tr>
-        <tr id="iw-phone-row" class="iw_table_row">
-          <td class="iw_attribute_name">Telephone:</td>
-          <td id="iw-phone"></td>
-        </tr>
-        <tr id="iw-rating-row" class="iw_table_row">
-          <td class="iw_attribute_name">Rating:</td>
-          <td id="iw-rating"></td>
-        </tr>
-        <tr id="iw-website-row" class="iw_table_row">
-          <td class="iw_attribute_name">Website:</td>
-          <td id="iw-website"></td>
-        </tr>
-      </table>
-    </div>
+  <div id="infoWindowPopup" style="display: none">
   </div> 
 
   <div class="container">
+
     <div class="row no-margin">
       <div class="col l6">
         <h3>Hmm, what's nearby?</h3> 
       </div>
       <div class= "col l6">
-
        <form id="search" name="search">
         <div class="row">
           <div class="col l8">
@@ -54,9 +29,9 @@
           </div>
         </div>
       </form>
-
     </div>
   </div> 
+
   <div class="row">
     <div class="col l8 m12 s12 tableheight">
       <div class="map-container" id="map-container">
@@ -66,14 +41,8 @@
         Geolocation failed: {{geolocationError}}
         {{/unless}}
       </div>
-      {{#if searchSubmited}}
-      <div class="map-container" id="map-container">
-       {{resultmap}}
-     </div>
-     {{/if}}
    </div>
    <div class="col l4 m12 s12 tableheight">
-
     <div class="row result-container">
       <div class="col s12 shiftleft">
         <ul class="tabs">
@@ -83,41 +52,30 @@
       </div>
 
       <div id="test1" class="col s12">
-      <div id="noresult">
-      Search something!
+        <div id="noresult">
+          Search something!
+        </div>
+        <table>
+          <tbody class="highlight" id="results">
+          </tbody>
+        </table>
       </div>
-       <table>
-        <tbody class="highlight" id="results">
-        </tbody>
-      </table>
-    </div>
 
-    <div id="test2" class="col s12">
-      <!--   {{#if travelMode.length}} -->
-    <div id="floating-panel" style="visibility:hidden;">
-
-    <b>Mode of Travel: </b>
-    <select id="mode">
-      <option value="DRIVING">Driving</option>
-      <option value="WALKING">Walking</option>
-      <option value="BICYCLING">Bicycling</option>
-      <option value="TRANSIT">Transit</option>
-    </select>
+      <div id="test2" class="col s12">
+        <div id="floating-panel" style="visibility:hidden;">
+         <b>Transportation Mode: </b>
+          <select id="mode">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+          </select>
+        </div>
+        <div id="directions">
+        </div>
+      </div>
     </div>
-   <!--  {{/if}} -->
-    </div>
-
   </div>
-
-
-
-</div>
 </div> 
 </div> 
 </template>
-
-
-<template name="resultmap">
-
-</template>  
-

@@ -6,6 +6,11 @@
     var myMarker;
     var directionsService;
      var directionsDisplay;
+      var map;
+
+     $(document).ready(function() {
+    $('select:not([multiple])').material_select();
+});
 
     Meteor.startup(function() {
      GoogleMaps.load({ v: '3', key: Meteor.settings.public.apiKey, libraries: 'geometry,places' });
@@ -49,7 +54,7 @@
       var searchValue = search.val();
 
 
-      var map;
+     
       //var infowindow;
 
       var latLng = Geolocation.latLng();
@@ -139,11 +144,15 @@
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
+
           $('ul.tabs').tabs('select_tab', 'test2');
           } else {
             window.alert('Directions request failed due to ' + status);
           }
         });
+        debugger;
+    
+    Session.set({ lat: marker.position.lat(),  lng:marker.position.lng()})
       }
 
         function dropMarker(i) {
@@ -182,6 +191,18 @@
         }
 
         function buildIWContent(place) {
+window.onload = function(place){
+  debugger;
+document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
+          '">' + place.name + '</a></b>';
+};
+
+$( document ).ready(function(place) {
+  // Handler for .ready() called.
+  document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
+          '">' + place.name + '</a></b>';
+});
+
           document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
           '">' + place.name + '</a></b>';
           document.getElementById('iw-address').textContent = place.vicinity;
@@ -221,6 +242,29 @@ document.getElementById('iw-icon').innerHTML = '<b><button><a href="' + place.ur
           }
         }
       },
+
+      'change #mode': function(event) {
+      function recalculateAndDisplayRoute(marker,directionsService, directionsDisplay) {
+        var selectedMode = document.getElementById('mode').value;
+        directionsService.route({
+         origin: myMarker.position,
+          destination: marker,
+          travelMode: google.maps.TravelMode[selectedMode]
+        }, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+      debugger;
+       var lat =  Session.get('lat');
+        var lng =  Session.get('lng');
+        var thisMarker = new google.maps.LatLng(lat, lng);
+       recalculateAndDisplayRoute(thisMarker,directionsService, directionsDisplay);
+    },
     });
 
 

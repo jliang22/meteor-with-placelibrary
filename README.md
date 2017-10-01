@@ -1,7 +1,16 @@
 # meteor-with-placelibrary
 
+Experimenting meteor with google api's. 
+
 TO RUN: 
 meteor --settings settings.json
 
-Create settings.json file
-with your google api key
+MUST HAVE:
+Create settings.json file with your google api key
+
+{
+	"public": 
+	{
+		"apiKey" : "yourapiKey"
+	}
+}	
